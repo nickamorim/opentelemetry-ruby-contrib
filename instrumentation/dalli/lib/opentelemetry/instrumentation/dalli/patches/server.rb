@@ -25,6 +25,7 @@ module OpenTelemetry
             end
 
             attributes['peer.service'] = config[:peer_service] if config[:peer_service]
+            attributes.compact!
             tracer.in_span(operation, attributes: attributes, kind: :client) do
               super
             end
